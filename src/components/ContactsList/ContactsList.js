@@ -4,23 +4,47 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+
+import IconButton from '@material-ui/core/IconButton';
+
+import PhoneIcon from '@material-ui/icons/Phone';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Container } from '@material-ui/core';
+
 const ContactsList = ({ contacts, onDeleteContact }) => (
-  <ul className={s.contacts}>
-    {contacts.map(({ id, name, number }) => (
-      <li className={s.listItem} key={id}>
-        <p>
-          {name}: {number}
-        </p>
-        <button
+  // <ul className={s.contacts}>
+  <Container>
+    <List className={s.ContactsList}>
+      {contacts.map(({ id, name, number }) => (
+        <ListItem className={s.Contact} key={id}>
+          {/* // <li className={s.listItem} key={id}> */}
+          <PhoneIcon className={s.PhoneIcon} />
+          <p className={s.ContactName}>
+            {name}: {number}
+          </p>
+          {/* <button
           type="button"
           className={s.button}
           onClick={() => onDeleteContact(id)}
         >
           Удалить
-        </button>
-      </li>
-    ))}
-  </ul>
+        </button> */}
+          <IconButton
+            edge="end"
+            type="button"
+            onClick={() => onDeleteContact(id)}
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+        // {/* </li>  */}
+      ))}
+    </List>
+  </Container>
+  // {/* </ul> */}
 );
 
 ContactsList.propTypes = {

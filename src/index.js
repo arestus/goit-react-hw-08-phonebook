@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import store from './redux/store';
 import App from './App';
-import 'normalize.css';
+import 'modern-normalize/modern-normalize.css';
 
 ReactDOM.render(
   <React.StrictMode>

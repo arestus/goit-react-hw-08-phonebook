@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
-import AppBar from './components/AppBar';
+import AppBarRender from './components/AppBar';
 // import ContactsView from './views/ContactsView';
 // import HomeView from './views/HomeView';
 // import LoginView from './views/LoginView';
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <AppBar />
+        <AppBarRender />
         <Suspense fallback={<p>Загружаем...</p>}>
           <Switch>
             <PublicRoute exact path="/" component={HomeView} />

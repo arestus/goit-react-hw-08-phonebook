@@ -4,25 +4,36 @@ import Navigation from './Navigation';
 import UserMenu from './UserMenu';
 import AuthNav from './AuthNav';
 import { authSelectors } from '../redux/auth';
+import { AppBar, Container, Typography } from '@material-ui/core';
+// import red from '@material-ui/core/colors/red';
+// import { createMuiTheme } from '@material-ui/core/styles';
 
-// const styles = {
-//   header: {
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     borderBottom: '1px solid #2A363B',
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: red[500],
+//     },
 //   },
-// };
+// });
 
-const AppBar = ({ isAuthenticated }) => (
-  <header /*style={styles.header}*/>
-    <Navigation />
-    {isAuthenticated ? <UserMenu /> : <AuthNav />}
-  </header>
+const styles = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+};
+
+const AppBarRender = ({ isAuthenticated }) => (
+  <AppBar color="primary" position="fixed">
+    <Container style={styles} fixed>
+      <Typography variant="h6">Phonebook</Typography>
+      <Navigation />
+      {isAuthenticated ? <UserMenu /> : <AuthNav />}
+    </Container>
+  </AppBar>
 );
 
 const mapStateToProps = state => ({
   isAuthenticated: authSelectors.getIsAuthenticated(state),
 });
 
-export default connect(mapStateToProps)(AppBar);
+export default connect(mapStateToProps)(AppBarRender);
