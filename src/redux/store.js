@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { contactsReducer } from './contacts';
 import { authReducer } from './auth';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,7 +20,7 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
+  // logger,
 ];
 
 // const rootReducer = combineReducers({
